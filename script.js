@@ -78,8 +78,7 @@ function gererFormulaire(event) {
    message.style.display="block";
     disparaitre.style.display="none";
     btnnouveausuggestion.style.display="block";
-   //emailjs ent
-   //emailjs.send();
+   //emailjs send
 
    const parametres={
     visibilite: anonyme.checked ? "anonyme":"visible",
