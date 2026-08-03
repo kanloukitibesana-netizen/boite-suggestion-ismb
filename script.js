@@ -29,14 +29,6 @@ let disparaitre=document.getElementById("utilisateur");
 let btnnouveausuggestion=document.getElementById("btn");
 
 
-/*let nomValue=nom.value;
-    console.log(nomValue);
-    let prenomValue=prenom.value;
-    console.log(prenomValue);
-    let telephoneValue=telephone.value;
-    console.log(telephoneValue);
-    let emailValue=email.value;
-    console.log(emailValue);*/
 
   function comportement_utilisateur(){
 
