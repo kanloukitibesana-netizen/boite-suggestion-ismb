@@ -1,0 +1,505 @@
+:root {
+    --bleu-nuit: #1e2b50;
+    --orange: #f29f05;
+    --noir: #000000;
+    --white: #ffffff;
+    --couleur-principale: #0d6efd;
+    --couleur-secondaire: #0a58ca;
+    --couleur-fond: #f8f9fa;
+    --couleur-blanc: #ffffff;
+    --couleur-noir: #212529;
+    --couleur-gris: #6c757d;
+    --couleur-bordure: #dee2e6;
+    --couleur-succes: #198754;
+    --couleur-erreur: #dc3545;
+
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+     font-size: 20px;
+    background: var(--bleu-nuit);
+    color: var(--couleur-blanc);
+}
+
+/* nav */
+
+nav {
+    display: flex;
+    margin: auto;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background-color: #000000;
+    text-align: center;
+    
+    
+}
+
+#logo {
+    align-items: center;
+    margin: auto;
+    justify-content: space-between;
+    display: flex;
+    max-width: 330px;
+    width: 100%;
+}
+
+#logo img {
+    height: 150px;
+    width: auto;
+}
+
+#logo h1 {
+ 
+    font-size: 20px;
+    color: var(--white);
+}
+
+#navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: auto;
+    font-size: 20px;
+    max-width: 1015px;
+    width: 100%;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+#navbar a:hover {
+    color: var(--couleur-secondaire);
+
+}
+
+#navbar a {
+    text-decoration: none;
+    color: var(--orange);
+    margin: auto;
+    justify-content: space-between;
+
+}
+
+#navbar a i {
+    justify-content: space-between;
+    margin: 8px;
+    color: var(--white);
+
+}
+
+/* aceuil */
+
+#acceuilbody {
+    text-align: center;
+    max-width: 900px;
+    width: 90%;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+    font-size: x-large;
+    margin: auto;
+    margin-top: 100px;
+
+
+
+}
+
+#acceuilbody p {
+    margin: auto;
+    margin-top: 20px;
+}
+
+#ano {
+    color: var(--couleur-succes);
+}
+
+#acceuilbody button {
+    margin: auto;
+    background: var(--couleur-erreur);
+    border-radius: 8px;
+    max-width: 100%;
+    width: 150px;
+    padding: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    border: none;
+    margin-top: 40px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 14px;
+
+
+
+}
+
+#acceuilbody a {
+    text-decoration: none;
+    color: var(--couleur-blanc);
+}
+
+#acceuilbody button:hover {
+    background: var(--orange);
+
+}
+
+/* css pour la partie suggestion */
+.cadresuggestion {
+    text-align: center;
+    justify-content: space-between;
+
+}
+
+/* acceuil suggestion */
+.suggestion {
+    margin: auto;
+    margin-top: 60px;
+    max-width: 1000px;
+    width: 100%;
+    border: 2px solid var(--couleur-bordure);
+    border-radius: 15px;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #212529;
+
+}
+
+.suggestion b {
+    color: #f29f05;
+}
+
+#listsuggestion {
+    margin: auto;
+    margin-top: 10px;
+    max-width: 400px;
+    width: 100%;
+}
+
+#listsuggestion b {
+    color: #198754;
+}
+#chois_identiter{
+    margin: auto;
+    margin-top: 20px;
+    
+
+}
+#choix{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 400px;
+    margin: auto;
+    margin-top: 10px;
+}
+#nom_prenom{
+     display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+    justify-content:center;  
+    
+}
+#nom_prenom input{
+ border-radius: 5px;
+ margin: auto;
+ padding: 5px;
+ border: none;
+ cursor: pointer;
+ transition: 0.3s;
+}
+#nom_prenom input:hover{
+ background-color: #6c757d;
+ box-shadow: 0 0 10px var(--couleur-principale);
+ color: var(--white);
+}
+
+#categorie{
+    margin: auto;
+    max-width: 300px;
+    width: 100%;
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 145px;
+}
+.sujet{
+    margin: auto;
+    margin-top: 15px;
+    max-width:0px ;
+    width: 100%;
+    margin-left: 150px;
+    
+}
+.sujet input{
+    border-radius: 5px;
+    padding: 5px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.sujet input:hover{
+    box-shadow: 0 0 10px var(--couleur-principale);
+    color: var(--white);
+    background: var(--couleur-gris);
+}
+.sujet textarea{
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.sujet textarea:hover{
+    background:var(--couleur-gris);
+    color: var(--white);
+    box-shadow: 0 0 10px var(--couleur-principale);
+}
+.sujet button{
+    margin: auto;
+    padding: 10px;
+    font-size: 20px;
+    border: none;
+    border-radius: 6px;
+    text-align: center;
+    background: var(--couleur-erreur);
+    color: var(--white);
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+.sujet button:hover{
+    background: var(--orange);
+    color: var(--couleur-succes);
+    box-shadow: 0 0 15px var(--couleur-succes);
+}
+
+select{
+    border-radius: 5px;
+    background: var(--couleur-gris);
+}
+
+select:hover{
+    box-shadow: 0 0 10px var(--couleur-principale);
+}
+option{
+    background-color: var(--couleur-gris);
+    color: var(--white);
+}
+#utilisateur{
+    margin: auto;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+}
+#pfinsuggestion{
+    margin: auto;
+    margin-top: 10px;
+    padding: 5px;
+   font-size: 17px;
+    background: #000000;
+}
+#pfinsuggestion b{
+    color: #198754;
+}
+
+/* css a propos */
+.apropos{
+    text-align: center;
+    margin: auto;
+    margin-top: 60px;
+}
+.apropos p {
+    margin: auto;
+    margin-top: 10px;
+}
+.apropos h2{
+    color: var(--couleur-principale);
+}
+.aproposelement{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+/* mission et objectif */
+.missobj{
+    margin: auto;
+    max-width: 600px;
+    width: 100%;
+    border: 2px solid var(--couleur-bordure);
+    border-radius: 8px;
+    margin-top: 25px;
+    background: var(--couleur-noir);
+    box-shadow: 0 0 20px var(--couleur-principale) ;
+}
+.missobj ul li{
+    margin: auto;
+    
+}
+#but{
+    display: flex;
+    flex-wrap: wrap;
+}
+#elementbut{
+    margin: auto;
+    border: 2px solid var(--couleur-bordure);
+    max-width: 300px;
+    width: 100%;
+    margin-top: 35px;
+    border-radius: 8px;
+    background: var(--couleur-noir);
+    box-shadow: 0 0 20px var(--couleur-principale) ;
+}
+#elementbut h3{
+    color:#0d6efd;
+    margin: auto;
+    margin-top: 10px;
+}
+#ismb{
+    color: var(--orange);
+}
+#finelement{
+  margin: auto;
+  margin-top: 40px;
+
+  margin-bottom: 15px;
+}
+.apropos i{
+    margin: auto;
+    margin-right: 10px;
+    color: var(--couleur-succes);
+}
+.apropos ul li{
+    list-style: none;
+}
+
+/* css contact */
+.contact{
+    margin: auto;
+    margin-top: 80px;
+    text-align: center;
+    justify-content: center;
+    max-width: 700px;
+    width: 100%;
+}
+#cadremessage{
+    margin: auto;
+    margin-left: 50px;
+    margin-top: 15px;
+}
+#cadremessage h1{
+    color: var(--couleur-succes);
+}
+
+#message{
+    margin: auto;
+    max-width: 230px;
+    width: 100%;
+    border: 2px solid var(--couleur-bordure);
+    border-radius: 5px;
+    background: var(--couleur-noir);
+    margin-top: 20px;
+    margin-left: 0px;
+}
+#message label{
+    margin: auto;
+    margin-left: 10px;
+}
+#message label input{
+    margin: auto;
+    margin-left: 10px;
+    border-radius: 8px;
+    padding: 5px;
+    outline: none;
+    cursor: pointer;
+    transition: 0.3s;
+
+}
+#message label input:hover{
+    background: var(--couleur-gris);
+}
+#message button{
+    align-items: center;
+    border-radius: 5px;
+    outline: none;
+    margin: auto;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+    background-color:var(--couleur-erreur) ;
+    color: var(--white);
+    
+}
+#message button:hover{
+ background: var(--orange);
+ color: var(--couleur-principale);
+ border-radius: 10px;
+
+}
+#message i{
+    color: var(--couleur-succes);
+    margin: auto;
+    margin-right: 5px;
+}
+
+#address{
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    margin-top: 35px;
+    justify-content: space-between;
+    margin-left: 40px;
+    margin-right: 10px;
+}
+#address p a{
+    text-decoration: none;
+    color: #f29f05;
+    transition: 0.3s;
+
+}
+#address p a:hover{
+    color: var(--couleur-succes);
+}
+#address p i {
+    color: var(--orange);
+    margin: auto;
+    margin-right: 5px;
+}
+#address p i:hover{
+    color: #dc3545;
+} 
+
+footer{
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--couleur-noir);
+    padding: 20px;
+    width: 100%;
+    font-size: 30px;
+}
+footer i{
+    margin: auto;
+    margin-right: 10px;
+    color: #f29f05;
+
+}
+footer a{
+    text-decoration: none;
+    color: #f29f05;
+    transition: 0.3s;
+}
+footer a:hover{
+    color: #dc3545;
+}
+
+/* responsive */
+@media (max-width:768){
+
+}
