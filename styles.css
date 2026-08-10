@@ -50,15 +50,19 @@ body{
 }
 @keyframes fond {
 
-    0%{
+   0%{
         background-image: url(img_3.jpg);
     }
-
-    33%{
-        background-image: url(img_5.jpg);
+    
+    40%{
+        background-image: url(image2_salle_info.jpg);
     }
 
     66%{
+        background-image: url(img_5.jpg);
+    }
+
+    80%{
         background-image: url(img_4.jpg);
     }
 
