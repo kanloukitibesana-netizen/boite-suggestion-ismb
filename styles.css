@@ -216,13 +216,10 @@ nav{
     /* Afficher le bouton */
     #btn-menu{
         display: block;
-        z-index: 1;
-    
-        
+        z-index: 1;   
     }
     #btn-menu i{
-      
-      margin-right: 220px;
+      margin-right: 620px;
     }
 
     /* Cacher le menu hors de l'écran */
@@ -230,19 +227,22 @@ nav{
         position: fixed;
         top: 0;
         right: -850px;
-    
-        
-
-        background-color: rgba(121,120,120,0.95);
-
+        background-color: rebeccapurple;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items:stretch;
         justify-content: center;
         gap: 30px;
-
         transition: right 0.4s ease;
+        max-width: 300px;
+        width: 100%;
     }
+    #navbar a {
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 15px 10px;
+}
 
     /* Menu visible */
     #navbar.active{
