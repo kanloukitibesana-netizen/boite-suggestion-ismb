@@ -219,7 +219,7 @@ nav{
         z-index: 1;   
     }
     #btn-menu i{
-      margin-right: 620px;
+      margin-right: 400px;
     }
 
     /* Cacher le menu hors de l'écran */
@@ -235,14 +235,15 @@ nav{
         gap: 30px;
         transition: right 0.4s ease;
         max-width: 300px;
-        width: 100%;
+
     }
+    /*
     #navbar a {
     width: 100%;
     box-sizing: border-box;
     text-align: center;
     padding: 15px 10px;
-}
+}*/
 
     /* Menu visible */
     #navbar.active{
