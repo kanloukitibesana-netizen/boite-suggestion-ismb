@@ -130,7 +130,7 @@ function gererFormulaire(event) {
 })
 .catch(function(error) {
     console.log("Erreur :", error);
-     messageErreu.textContent = "La suggestion n'a pas pu être envoyée. Veuillez réessayer.\n Veuillez vérifier votre connexion et réessayer.";
+     messageErreu.textContent = "La suggestion n'a pas pu être envoyée.\n Veuillez vérifier votre connexion et réessayer.";
     messageErreu.style.display = "block";
     messageErreu.style.color = "red";
 });
