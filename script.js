@@ -95,10 +95,7 @@ function gererFormulaire(event) {
   }
  else{
    messageErreu.style.display="none"
-   message.textContent="Votre suggestion a été envoyée avec succès .\n Merci de contribuer à l'ameloiration de l'ISMB.";
-   message.style.display="block";
-    disparaitre.style.display="none";
-    btnnouveausuggestion.style.display="block";
+   
    //emailjs ent
    //emailjs.send();
 
@@ -122,12 +119,23 @@ function gererFormulaire(event) {
 )
 .then(function(response) {
     console.log("Email envoyé !", response);
+
+    message.textContent = "Votre suggestion a été envoyée avec succès.\nMerci de contribuer à l'amélioration de l'ISMB.";
+    message.style.display = "block";
+
+    disparaitre.style.display = "none";
+    btnnouveausuggestion.style.display = "block";
+
+    formulaire_suggestion.reset();
 })
 .catch(function(error) {
     console.log("Erreur :", error);
+     messageErreu.textContent = "La suggestion n'a pas pu être envoyée. Veuillez réessayer.\n Veuillez vérifier votre connexion et réessayer.";
+    messageErreu.style.display = "block";
+    messageErreu.style.color = "red";
 });
    console.log(parametres);
-    formulaire_suggestion.reset();
+    
   }  
   
   } 
