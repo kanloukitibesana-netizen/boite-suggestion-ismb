@@ -25,7 +25,7 @@ require "./view/partials/header.php"
                     <b id="ano"> anonyme ou en renseignant votre identité</b>,
                     selon votre préférence.
                 </p>
-                <button><a href="suggestion.html">Déposer une suggestion</a></button>
+                <button><a href="view/suggestion.php">Déposer une suggestion</a></button>
             </div>
 
         </div>

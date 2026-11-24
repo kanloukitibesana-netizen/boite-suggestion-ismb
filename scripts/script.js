@@ -142,13 +142,13 @@ function gererFormulaire(event) {
      anonyme.addEventListener("change",comportement_utilisateur);
 visible.addEventListener("change",comportement_utilisateur);
 
-formulaire_suggestion.addEventListener("submit",gererFormulaire);
- function nouvellesuggestion(){
-  disparaitre.style.display="block";
-  message.style.display="none";
-  btnnouveausuggestion.style.display="none";
+// formulaire_suggestion.addEventListener("submit",gererFormulaire);
+//  function nouvellesuggestion(){
+//   disparaitre.style.display="block";
+//   message.style.display="none";
+//   btnnouveausuggestion.style.display="none";
 
- }
- btnnouveausuggestion.addEventListener("click",nouvellesuggestion);
+//  }
+//  btnnouveausuggestion.addEventListener("click",nouvellesuggestion);
 
  

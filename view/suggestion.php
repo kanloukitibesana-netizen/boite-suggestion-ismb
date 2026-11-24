@@ -1,11 +1,133 @@
 <?php
-require "./view/partials/header.php"
+require "./../view/partials/header.php";
+// require "./../controllers/controller.php";
+require "./../functions/utilities.php";
+
+const ALLOWED_ANONYMITY_MODES = [
+    'anonyme' => 'Anonyme',
+    'visible' => 'Visible',
+];
+
+
+const ALLOWED_CATEGORIES = [
+    'enseignants' => 'Enseignement',
+    'infrastructures' => 'Infrastructures',
+    'bibliotheque' => 'Bibliothèque',
+    'vie_etudiante' => 'Vie étudiante',
+    'activites_sportives_et_culturelles' => 'Activités sportives et culturelles',
+    'hygiene_et_proprete' => 'Hygiène et propreté',
+    'securite' => 'Sécurité',
+    'restauration' => 'Restauration',
+    'autres' => 'Autre',
+];
+
+function escapeHtml(string $text): string
+{
+    return htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
+}
+
+/**
+ * Valide les champs envoyés par le formulaire sans effet de bord.
+ *
+ * @param array<string, mixed> $submittedFields
+ * @return array{
+ *     isValid: bool,
+ *     suggestion: ?array{anonymat: string, categorie: string, sujet: string, contenu: string},
+ *     errors: list<array{code: string, message: string}>
+ * }
+ */
+function validateSuggestionForm(array $submittedFields): array
+{
+    $anonymat = trim((string) ($submittedFields['identite'] ?? ''));
+    $categorie = trim((string) ($submittedFields['categories'] ?? ''));
+    $sujet = trim((string) ($submittedFields['sujet'] ?? ''));
+    $suggestion = trim((string) ($submittedFields['suggestion'] ?? ''));
+    $nom = trim((string) ($submittedFields['nom'] ?? ''));
+    $prenom = trim((string) ($submittedFields['prenom'] ?? ''));
+    $statut = trim((string) ($submittedFields['statut'] ?? ''));
+    $statut = trim((string) ($submittedFields['telephone'] ?? ''));
+    $statut = trim((string) ($submittedFields['email'] ?? ''));
+
+
+    //null coaelcing
+
+    $errors = [];
+
+    if (!array_key_exists($anonymat, ALLOWED_ANONYMITY_MODES)) {
+        $errors[] = [
+            'code' => 'INVALID_ANONYMITY',
+            'message' => 'Veuillez choisir entre « Anonyme » et « Visible ».',
+        ];
+    }
+
+    if (!array_key_exists($categorie, ALLOWED_CATEGORIES)) {
+        $errors[] = [
+            'code' => 'INVALID_CATEGORY',
+            'message' => 'Veuillez sélectionner une catégorie valide.',
+        ];
+    }
+
+    if ($sujet === '') {
+        $errors[] = [
+            'code' => 'EMPTY_SUBJECT',
+            'message' => 'Le sujet est obligatoire.',
+        ];
+    }
+
+    if ($contenu === '') {
+        $errors[] = [
+            'code' => 'EMPTY_CONTENT',
+            'message' => 'Le contenu de la suggestion est obligatoire.',
+        ];
+    }
+
+    if ($errors !== []) {
+        return [
+            'isValid' => false,
+            'suggestion' => null,
+            'errors' => $errors,
+        ];
+    }
+
+    return [
+        'isValid' => true,
+        'suggestion' => [
+            'anonymat' => $anonymat,
+            'categorie' => $categorie,
+            'sujet' => $sujet,
+            'contenu' => $contenu,
+        ],
+        'errors' => [],
+    ];
+}
+
+// Guard clause : empêche l'accès direct en GET à traitement.php
+if (($_SERVER['REQUEST_METHOD'] ?? 'GET') !== 'POST') {
+    http_response_code(405);
+    $validationErrors = [
+        [
+            'code' => 'METHOD_NOT_ALLOWED',
+            'message' => 'Cette page attend une soumission de formulaire en POST.',
+        ],
+    ];
+    $receivedSuggestion = null;
+} else {
+    $validationOutcome = validateSuggestionForm($_POST);
+    $validationErrors = $validationOutcome['errors'];
+    $receivedSuggestion = $validationOutcome['suggestion'];
+
+    if (!$validationOutcome['isValid']) {
+        http_response_code(422);
+    }
+}
+
+dump($_POST);
 ?>
 
 <!-- le_conterneur -->
 <section class="">
     <div class="cadresuggestion">
-        <form action="#" id="formSuggestion">
+        <form action="" id="formSuggestion" method="POST">
             <div class="suggestion">
                 <h1>Déposer une suggestion</h1>
                 <p>Votre avis est important pour <b>l'ISMB.</b>
@@ -30,15 +152,15 @@ require "./view/partials/header.php"
             <div id="utilisateur">
                 <div id="choi_utilisateur">
 
-                    <label for="">
-                        <input type="radio" id="anonyme" name="identite" value="anonyme">
-                        Anonyme
-                    </label>
+                    <?php foreach (ALLOWED_ANONYMITY_MODES as $key => $value): ?>
+                        <label for="<?= $key ?>">
+                            <input type="radio" id="<?= $key ?>" name="identite" value="<?= $key ?>">
+                            <?= $value ?>
+                        </label>
 
-                    <label for="">
-                        <input type="radio" id="visible" name="identite" value="visible">
-                        visible
-                    </label>
+                    <?php endforeach ?>
+
+                    
                 </div>
                 <!-- non et prenom -->
                 <div id="nom_prenom">
@@ -70,16 +192,9 @@ require "./view/partials/header.php"
 
                     <select id="categories" name="categories">
                         <option value="" disabled> Choisissez une categorie</option>
-                        <option value="enseignants">Enseignement</option>
-                        <option value="infrastructures">Infrastructures</option>
-                        <option value="bibliothèque">Bibliothèque</option>
-                        <option value="vie_etudiant">Vie étudiante</option>
-                        <option value=" Activités_sportives_et_culturelles">Activités sportives et culturelles
-                        </option>
-                        <option value=" Hygiène_et_propreté">Hygiène et propreté</option>
-                        <option value="securité">Sécurité</option>
-                        <option value="restauration">Restauration</option>
-                        <option value="autres">Autre</option>
+                        <?php foreach (ALLOWED_CATEGORIES as $key => $value) : ?>
+                            <option value="<?= $key ?>" > <?= $value ?></option>
+                        <?php endforeach ?>
                     </select>
 
 
@@ -114,11 +229,11 @@ require "./view/partials/header.php"
             </div>
             <p id="message"></p>
 
+            <div>
+                <button type="button"><i class="fa-regular fa-paper-plane"></i>Soumettre une nouvelle
+                    suggestion</button>
+            </div>
         </form>
-        <div>
-            <button type="button" id="btn"><i class="fa-regular fa-paper-plane"></i>Soumettre une nouvelle
-                suggestion</button>
-        </div>
         <p id="pfinsuggestion">Les informations personnelles ne sont demandées que si vous choisissez le mode
             <b>Visible</b>.
             Elles seront utilisées uniquement pour permettre à l'administration de vous recontacter
@@ -140,8 +255,8 @@ require "./view/partials/header.php"
         });
     })();
 </script>
-<script src="script.js"></script>
+<script src="./../scripts/script.js"></script>
 
 <?php
-require "./view/partials/footer.php"
+require "./../view/partials/footer.php"
 ?>
